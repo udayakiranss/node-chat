@@ -13,6 +13,16 @@ io.on('connection',(socket)=>{
     socket.on('disconnect',()=>{
         console.log('Disconnected from client');
     });
+
+    socket.on('createMessage',(message)=>{
+        console.log('Message received',message);
+    });
+
+    socket.emit('newMessage',{
+        from:'Uday-Server',
+        text: "Testing the message",
+        createdAt:122
+    });
 })
 
 const publicPath = path.join(__dirname,'../public');
